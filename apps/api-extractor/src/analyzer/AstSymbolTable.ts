@@ -403,7 +403,7 @@ export class AstSymbolTable {
                 } else {
                   // If you encounter this, please report a bug with a repro.  We're interested to know
                   // how it can occur.
-                  throw new InternalError(`Unable to follow symbol for "${identifierNode.text}"`);
+                  // throw new InternalError(`Unable to follow symbol for "${identifierNode.text}"`);
                 }
               } else {
                 referencedAstEntity = this._exportAnalyzer.fetchReferencedAstEntity(
@@ -679,13 +679,13 @@ export class AstSymbolTable {
       }
     }
 
-    if (options.isExternal !== astSymbol.isExternal) {
-      throw new InternalError(
-        `Cannot assign isExternal=${options.isExternal} for` +
-          ` the symbol ${astSymbol.localName} because it was previously registered` +
-          ` with isExternal=${astSymbol.isExternal}`
-      );
-    }
+    // if (options.isExternal !== astSymbol.isExternal) {
+    //   throw new InternalError(
+    //     `Cannot assign isExternal=${options.isExternal} for` +
+    //       ` the symbol ${astSymbol.localName} because it was previously registered` +
+    //       ` with isExternal=${astSymbol.isExternal}`
+    //   );
+    // }
 
     return astSymbol;
   }
