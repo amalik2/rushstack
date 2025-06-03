@@ -12,7 +12,6 @@ import {
 } from '@rushstack/node-core-library';
 import { ReleaseTag } from '@microsoft/api-extractor-model';
 import minimatch from 'minimatch';
-import { execSync } from 'child_process';
 
 import { ExtractorMessageId } from '../api/ExtractorMessageId';
 
@@ -105,11 +104,8 @@ export class Collector {
   // Used by getOverloadIndex()
   private readonly _cachedOverloadIndexesByDeclaration: Map<AstDeclaration, number>;
 
-  public readonly monorepoPackages: string[] = [];
-  
   public constructor(options: ICollectorOptions) {
     this.packageJsonLookup = new PackageJsonLookup();
-    this.monorepoPackages = execSync('lerna ls', { stdio: "pipe "}).toString().split("\n");
 
     this._program = options.program;
     this.extractorConfig = options.extractorConfig;
@@ -205,13 +201,6 @@ export class Collector {
             resolvedPackageNames.add(dependencyName);
           }
         }
-
-        for (const dependencyName of this.monorepoPackages) {
-          if (minimatch(dependencyName, packageNameOrPattern)) {
-            resolvedPackageNames.add(dependencyName);
-          }
-        }
-        
       }
     }
     return resolvedPackageNames;

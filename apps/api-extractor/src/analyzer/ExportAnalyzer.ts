@@ -474,10 +474,24 @@ export class ExportAnalyzer {
     // There is no symbol property in a ImportTypeNode, obtain the associated export symbol
     const exportSymbol: ts.Symbol | undefined = this._typeChecker.getSymbolAtLocation(rightMostToken);
     if (!exportSymbol) {
-      throw new InternalError(
+      console.error(
         `Symbol not found for identifier: ${node.getText()}\n` +
           SourceFileLocationFormatter.formatDeclaration(node)
       );
+
+      if (!node.qualifier) {
+        throw new InternalError('no qualifier');
+      }
+
+      let exportName = node.qualifier.getText().trim();
+
+      return this._fetchAstImport(undefined, {
+        importKind: AstImportKind.ImportType,
+        exportName: exportName,
+        // @ts-expect-error
+        modulePath: externalModulePath,
+        isTypeOnly: false
+      });
     }
 
     let followedSymbol: ts.Symbol = exportSymbol;
