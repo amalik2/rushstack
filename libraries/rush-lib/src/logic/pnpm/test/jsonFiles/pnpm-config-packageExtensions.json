@@ -1,9 +1,0 @@
-{
-  "globalPackageExtensions": {
-    "react-redux": {
-      "peerDependencies": {
-        "react-dom": "*"
-      }
-    }
-  }
-}

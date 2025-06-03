@@ -1,8 +1,0 @@
-{
-  "name": "b",
-  "version": "1.0.0",
-  "scripts": {
-    "_phase:build": "node ../collate.js",
-    "_phase:build:shard": "node ../build.js b"
-  }
-}

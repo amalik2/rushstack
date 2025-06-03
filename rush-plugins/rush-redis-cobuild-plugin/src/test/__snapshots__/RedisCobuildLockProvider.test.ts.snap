@@ -1,6 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`RedisCobuildLockProvider throws error with missing environment variables 1`] = `
-"The \\"RedisCobuildLockProvider\\" tries to access missing environment variable: REDIS_PASS
-Please check the configuration in rush-redis-cobuild-plugin.json file"
-`;

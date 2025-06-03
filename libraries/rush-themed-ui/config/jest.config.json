@@ -1,3 +1,0 @@
-{
-  "extends": "local-web-rig/profiles/library/config/jest.config.json"
-}

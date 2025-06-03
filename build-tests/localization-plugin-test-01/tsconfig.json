@@ -1,8 +1,0 @@
-{
-  "extends": "./node_modules/local-node-rig/profiles/default/tsconfig-base.json",
-  "compilerOptions": {
-    "module": "esnext",
-    "moduleResolution": "node",
-    "rootDirs": ["src", "temp/loc-json-ts"]
-  }
-}
